@@ -3,44 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reprodução Simultânea de Vídeos</title>
+    <title>Reprodução de Vídeo Local</title>
 </head>
 <body>
-    <h1>Reproduzir Vídeos Simultaneamente</h1>
-    <!-- Área para os vídeos -->
-    <div id="videos">
-        <iframe id="video1" width="560" height="315" src="https://www.youtube.com/embed/fhhE--iodPo?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <br><br>
-        <iframe id="video2" width="560" height="315" src="https://www.youtube.com/embed/Ca4Sb2uTIQk?enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <h1>Reproduzir Vídeo Local</h1>
+
+    <!-- Área para o vídeo -->
+    <video id="video" width="800" height="450" controls>
+        <source src="Tu\u00e9s+\u00c1guasPurificadoras-FhopMusic(Karaok\u00eaVersion).mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
 
     <!-- Botão Play -->
-    <button id="playButton">Play Ambos os Vídeos</button>
+    <button id="playButton">Play Vídeo</button>
 
     <!-- Script JavaScript -->
     <script>
-        // Função para criar players do YouTube via API
-        let player1, player2;
-        function onYouTubeIframeAPIReady() {
-            player1 = new YT.Player('video1');
-            player2 = new YT.Player('video2');
-        }
+        // Referência ao vídeo
+        const video = document.getElementById('video');
 
         // Configuração do botão Play
         document.getElementById('playButton').addEventListener('click', () => {
-            if (player1 && player2) {
-                player1.playVideo();
-                player2.playVideo();
-            } else {
-                alert("A API do YouTube ainda está carregando.");
-            }
+            video.play();
         });
-
-        // Inclusão da API do YouTube
-        let tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        let firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     </script>
 </body>
 </html>
